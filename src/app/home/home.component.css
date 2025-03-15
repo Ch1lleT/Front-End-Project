@@ -1,0 +1,104 @@
+.header,
+.footer {
+  height: 100px;
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header > img {
+  height: 50px;
+  width: auto;
+}
+
+.header > div > a {
+  text-decoration: none;
+  color: #007a8c;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.header > div > a:hover {
+  text-decoration: underline;
+}
+
+.header > div > input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #007a8c;
+}
+
+footer {
+  text-align: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  flex-grow: 1;
+  background: lightblue;
+}
+
+.main {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* แก้ไขให้มี 3 คอลัมน์ */
+  grid-template-rows: 100px 1fr 32px;
+  grid-gap: 10px;
+}
+
+.header {
+  grid-column: span 3; /* ทำให้ .header ขยายไป 3 คอลัมน์ */
+}
+
+.content {
+  grid-column-start: span 3; /* ใช้ให้ .content ขยายไป 3 คอลัมน์ */
+}
+
+.title-text {
+  color: #007a8c;
+  font-size: 55px;
+  font-weight: bold;
+}
+.map {
+  height: 80vh;
+}
+
+.background-detail {
+  background: #ffffff;
+  width: 100%;
+  height: 100vh;
+}
+
+.img-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* กำหนดให้มี 3 คอลัมน์ */
+  grid-auto-rows: auto;
+  gap: 10px;
+  width: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.img-group img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  height: auto; /* Ensures proper aspect ratio */
+  display: block; /* Removes inline element spacing */
+  object-fit: cover; /* Makes images cover their container */
+  margin: 0; /* Removes margin that could cause gaps */
+  border-radius: 5px;
+}
+.img-group img {
+  cursor: pointer;
+  transition: transform 0;
+}

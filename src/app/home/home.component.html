@@ -1,144 +1,71 @@
-<style>
-    .header,
-    .footer {
-      height: 100px;
-      background: rgb(255, 255, 255);
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    .header > img {
-      height: 50px;
-      width: auto;
-    }
-
-    .header > div > a {
-      text-decoration: none;
-      color: #007a8c;
-      font-weight: bold;
-      font-size: 20px;
-      margin-right: 10px;
-    }
-
-    .header > div > a:hover {
-      text-decoration: underline;
-    }
-
-    .header > div > input { 
-      padding: 5px;
-      border-radius: 5px;
-      border: 1px solid #007a8c;
-    }
-      
-  
-    footer {
-      text-align: center;
-    }
-  
-    section {
-      display: flex;
-      flex-direction: column;
-      width: auto;
-      flex-grow: 1;
-      background: lightblue;
-      
-    }
-  
-    .main {
-      height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr; /* แก้ไขให้มี 3 คอลัมน์ */
-      grid-template-rows: 100px 1fr 32px;
-      grid-gap: 10px;
-    }
-  
-    .header {
-      grid-column: span 3; /* ทำให้ .header ขยายไป 3 คอลัมน์ */
-    }
-  
-    .content {
-      grid-column-start: span 3; /* ใช้ให้ .content ขยายไป 3 คอลัมน์ */
-    }
-  
-    .title-text {
-      color: #007a8c;
-      font-size: 55px;
-      font-weight: bold;
-    }
-  
-    .background-detail {
-      background: #ffffff;
-      width: 100%;
-      height: 100%;
-    }
-  
-    .img-group {
-      column-count: 3;
-      column-gap: 10px; /* เพิ่มช่องว่างระหว่างคอลัมน์ */
-      overflow-y: auto;
-      width: 100%;
-      height: 400px;
-      padding: 5px;
-      column-fill: auto;
-    }
-  
-    .img-group img {
-      width: 100%;
-      margin-bottom: 5px;
-      border-radius: 5px;
-    }
-  </style>
-  
-  <main class="main">
-    <div class="header">
-      <div>
-        <img src="/assets/Title.png" alt="" />
-      </div>
-  
-      <div>
-        <a href="">Home</a>
-        <a href="">Map</a>
-        <a href="">Route</a>
-        <a href="">Contact</a>
-      </div>
-  
-      <div>
-        <input type="text" placeholder="Search..." />
-      </div>
+<main class="main" *ngIf="!showDetail">
+  <div class="header">
+    <div>
+      <img src="/assets/Title.png" alt="" />
     </div>
-  
+
+    <div>
+      <a href="">Home</a>
+      <a href="">Map</a>
+      <a href="">Route</a>
+      <a href="">Contact</a>
+    </div>
+
+    <div>
+      <input type="text" placeholder="Search..." />
+    </div>
+  </div>
+
+  <div class="map">
     <ngt-canvas
       [sceneGraph]="sceneGraph"
       [camera]="{ position: [0, 11, 1], fov: 80 }"
       (mousemove)="OnMouseMove($event)"
     />
-  
-    <div class="background-detail">
-        <pre>{{ selected }}</pre>
+  </div>
 
-      <p class="title-text" *ngIf="selected == 'Chiang_Rai'">เชียงราย</p>
-      <div *ngIf="selected == 'Chiang_Rai'" class="img-group">
-        <img src="/assets/Chiang_Rai/image 14.png" alt="" />
-        <img src="/assets/Chiang_Rai/image 15.png" alt="" />
-        <img src="/assets/Chiang_Rai/image 16.png" alt="" />
-        <img src="/assets/Chiang_Rai/image 17.png" alt="" />
-        <img src="/assets/Chiang_Rai/image 18.png" alt="" />
-      </div>
+  <div class="background-detail">
+    <!-- <pre>{{ selected }}</pre> -->
 
-      <p class="title-text" *ngIf="selected == 'Kanchanaburi'">กาญจนบุรี</p>
-      <div *ngIf="selected == 'Kanchanaburi'" class="img-group">
-        <img src="/assets/Kanchanaburi/image 15.png" alt="" />
-        <img src="/assets/Kanchanaburi/image 16.png" alt="" />
-        <img src="/assets/Kanchanaburi/image 17.png" alt="" />
-        <img src="/assets/Kanchanaburi/image 18.png" alt="" />
-        <img src="/assets/Kanchanaburi/image 19.png" alt="" />
-      </div>
+    <div *ngIf="selected === null" class="img-group">
+      <img src="/assets/images/image1.png" alt="" />
+      <img src="/assets/images/image2.png" alt="" />
+      <img src="/assets/images/image3.png" alt="" />
+      <img src="/assets/images/image4.png" alt="" />
+      <img src="/assets/images/image5.png" alt="" />
+      <img src="/assets/images/image6.png" alt="" />
+      <img src="/assets/images/image7.png" alt="" />
+      <img src="/assets/images/image8.png" alt="" />
+      <img src="/assets/images/image9.png" alt="" />
     </div>
-  
-    <!-- <div class="footer">
-      <h1>Footer Content</h1>
-    </div> -->
-  </main>
-  
+
+    <p class="title-text" *ngIf="selected == 'Chiang_Rai'">เชียงราย</p>
+    <div *ngIf="selected == 'Chiang_Rai'" class="img-group">
+      <img src="/assets/Chiang_Rai/image 14.png" alt="" />
+      <img src="/assets/Chiang_Rai/image 15.png" alt="" />
+      <img
+        src="/assets/Chiang_Rai/image 16.png"
+        alt=""
+        (click)="onImageClick('image 16.png')"
+      />
+      <img src="/assets/Chiang_Rai/image 17.png" alt="" />
+      <img src="/assets/Chiang_Rai/image 18.png" alt="" />
+    </div>
+
+    <p class="title-text" *ngIf="selected == 'Kanchanaburi'">กาญจนบุรี</p>
+    <div *ngIf="selected == 'Kanchanaburi'" class="img-group">
+      <img src="/assets/Kanchanaburi/image 15.png" alt="" />
+      <img
+        src="/assets/Kanchanaburi/image 16.png"
+        alt=""
+        (click)="onImageClick('image 16.png')"
+      />
+      <img src="/assets/Kanchanaburi/image 17.png" alt="" />
+      <img src="/assets/Kanchanaburi/image 18.png" alt="" />
+      <img src="/assets/Kanchanaburi/image 19.png" alt="" />
+    </div>
+  </div>
+</main>
+
+<!-- <app-detail *ngIf="showDetail" [province]="selected"></app-detail> -->
+<app-detail *ngIf="showDetail && selected" [province]="selected"></app-detail>

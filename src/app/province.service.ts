@@ -11,8 +11,12 @@ export class ProvinceService {
   constructor() {
   }
 
-  Select(provice : string | null){
+  Select(provice: string | null) {
     this.seletecedProvinceSource.next(provice);
   }
 
+
+  clearSelectedProvince() {
+    this.seletecedProvinceSource.next(null);
+  }
 }
