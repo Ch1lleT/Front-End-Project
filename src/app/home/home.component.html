@@ -12,7 +12,7 @@
     </div>
 
     <div>
-      <input type="text" placeholder="Search..." />
+      <input type="text" placeholder="ค้นหา" />
     </div>
   </div>
 
@@ -46,7 +46,7 @@
       <img
         src="/assets/Chiang_Rai/image 16.png"
         alt=""
-        (click)="onImageClick('image 16.png')"
+        onclick="window.location.href = '/detail01';"
       />
       <img src="/assets/Chiang_Rai/image 17.png" alt="" />
       <img src="/assets/Chiang_Rai/image 18.png" alt="" />
@@ -58,11 +58,55 @@
       <img
         src="/assets/Kanchanaburi/image 16.png"
         alt=""
-        (click)="onImageClick('image 16.png')"
+        onclick="window.location.href = '/detail02';"
       />
       <img src="/assets/Kanchanaburi/image 17.png" alt="" />
       <img src="/assets/Kanchanaburi/image 18.png" alt="" />
       <img src="/assets/Kanchanaburi/image 19.png" alt="" />
+    </div>
+
+    <p class="title-text" *ngIf="selected == 'Ubon_Ratchathani'">อุบลราชธานี</p>
+    <div *ngIf="selected == 'Ubon_Ratchathani'" class="img-group">
+      <img src="/assets/Ubon_Ratchathani/image 14.png" alt="" />
+      <img src="/assets/Ubon_Ratchathani/image 15.png" alt="" />
+      <img src="/assets/Ubon_Ratchathani/image 16.png" alt="" />
+      <img src="/assets/Ubon_Ratchathani/image 21.png" alt="" />
+      <img src="/assets/Ubon_Ratchathani/image 22.png" alt="" />
+      <img
+        src="/assets/Ubon_Ratchathani/image.png"
+        onclick="window.location.href = '/detail03';"
+        alt=""
+      />
+    </div>
+
+    <p class="title-text" *ngIf="selected == 'Prachuap_Khiri_Khan'">
+      ประจวบคีรีขัน
+    </p>
+    <div *ngIf="selected == 'Prachuap_Khiri_Khan'" class="img-group">
+      <img src="/assets/Prachuap_Khiri_Khan/image-1.png" alt="" />
+      <img src="/assets/Prachuap_Khiri_Khan/image-2.png" alt="" />
+      <img
+        src="/assets/Prachuap_Khiri_Khan/image-3.png"
+        onclick="window.location.href = '/detail04';"
+        alt=""
+      />
+      <img src="/assets/Prachuap_Khiri_Khan/image-4.png" alt="" />
+      <img src="/assets/Prachuap_Khiri_Khan/image-5.png" alt="" />
+      <img src="/assets/Prachuap_Khiri_Khan/image.png" alt="" />
+    </div>
+
+    <p class="title-text" *ngIf="selected == 'Chon_Buri'">ชลบุรี</p>
+    <div *ngIf="selected == 'Chon_Buri'" class="img-group">
+      <img src="/assets/Chon_Buri/image-1.png" alt="" />
+      <img src="/assets/Chon_Buri/image-2.png" alt="" />
+      <img src="/assets/Chon_Buri/image-3.png" alt="" />
+      <img src="/assets/Chon_Buri/image-4.png" alt="" />
+      <img src="/assets/Chon_Buri/image-5.png" onclick="window.location.href = '/detail05';" alt="" />
+      <img
+        src="/assets/Chon_Buri/image.png"
+        
+        alt=""
+      />
     </div>
   </div>
 </main>
