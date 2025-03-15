@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {GLTF, OrbitControls} from 'three-stdlib';
 import { CommonModule } from '@angular/common';
+import { ProvinceService } from '../province.service';
 
 extend(THREE);
 extend({ OrbitControls });
@@ -79,20 +80,24 @@ export class Experience {
 
 
   MouseClick(event : THREE.Object3D){
-    console.log(event);
-
     if(this.selected){
       (this.selected.material as MeshStandardMaterial).color.set(this.BaseColor);
+    }
+
+    if(this.selected === event as THREE.Mesh) {
+      this.proviceService.Select(null);
+      return;
     }
 
     const mesh = event as Mesh
     const material = mesh.material as MeshStandardMaterial;
     this.selected = mesh;
     material.color.set(this.GreenColor);
+    this.proviceService.Select(mesh.name);
+  
   }
 
   OnMouseHover(event:THREE.Object3D){
-    console.log(event);
     const mesh = event as THREE.Mesh;
     const material = mesh.material as THREE.MeshStandardMaterial
     material.color.set(this.GreenColor);
@@ -100,7 +105,8 @@ export class Experience {
   }
 
   OnMouseOut(event:THREE.Object3D){
-    console.log(event);
+    if(this.selected?.uuid === event.uuid) return;
+
     const mesh = event as THREE.Mesh;
     const material = mesh.material as THREE.MeshStandardMaterial
     material.color.set(this.BaseColor);
@@ -108,7 +114,7 @@ export class Experience {
   }
 
 
-  constructor(){
+  constructor(private proviceService : ProvinceService ){
 
     console.log(this.meshes());
 
