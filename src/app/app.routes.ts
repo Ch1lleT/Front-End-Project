@@ -9,11 +9,11 @@ import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' },
   { path: 'detail01', component: Detail01Component },
   { path: 'detail02', component: Detail02Component },
   { path: 'detail03', component: Detail03Component },
   { path: 'detail04', component: Detail04Component },
   { path: 'detail05', component: Detail05Component },
   { path: 'home', component: HomeComponent },
+  { path: '**', redirectTo: 'home' },
 ];
