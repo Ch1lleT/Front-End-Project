@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { NgtCanvas } from 'angular-three';
 import { Experience } from '../experience/experience.component';
 import { ProvinceService } from '../province.service';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-home',
-  imports: [NgtCanvas],
+  imports: [NgtCanvas , CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
