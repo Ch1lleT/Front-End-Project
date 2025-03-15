@@ -7,7 +7,7 @@ import { ProvinceService } from './province.service';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, NgtCanvas],
+    imports: [RouterOutlet, ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })
