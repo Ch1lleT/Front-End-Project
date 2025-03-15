@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, Component, viewChild, ElementRef, ChangeDetectionStrategy, model, computed, Signal } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, viewChild, ElementRef, ChangeDetectionStrategy, model, computed, Signal, signal, effect } from '@angular/core';
 import { extend, injectBeforeRender, injectLoader, injectStore, NgtArgs } from 'angular-three';
 import { Mesh, BoxGeometry, MeshBasicMaterial , MeshStandardMaterial } from 'three'; 
 import * as THREE from 'three';
@@ -22,6 +22,8 @@ extend({ OrbitControls });
           [geometry]="mesh.geometry"
           [position]="mesh.position"
           (click)="MouseClick($event.object)"
+          (pointerover)="OnMouseHover($event.object)"
+          (pointerout)="OnMouseOut($event.object)"
           [name]="mesh.name"
         >
         <ngt-mesh-standard-material color="red"></ngt-mesh-standard-material>
@@ -34,7 +36,7 @@ extend({ OrbitControls });
     <ngt-directional-light [position]="[ 1,1,-1]"  [intensity]="2" ></ngt-directional-light>
     <ngt-directional-light [position]="[-1,1, 1]"  [intensity]="2" ></ngt-directional-light>
     <ngt-directional-light [position]="[-1,1,-1]" [intensity]="2" ></ngt-directional-light>
-    <!-- <ngt-axes-helper></ngt-axes-helper> -->
+    <ngt-axes-helper></ngt-axes-helper>
   `,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -42,6 +44,7 @@ extend({ OrbitControls });
 
 export class Experience {
   meshRef = viewChild.required<ElementRef<Mesh>>('mesh');
+  hoverMesh = signal<THREE.Mesh | null>(null);
 
   selected : THREE.Mesh | null = null;
 
@@ -88,11 +91,27 @@ export class Experience {
     material.color.set(this.GreenColor);
   }
 
+  OnMouseHover(event:THREE.Object3D){
+    console.log(event);
+    const mesh = event as THREE.Mesh;
+    const material = mesh.material as THREE.MeshStandardMaterial
+    material.color.set(this.GreenColor);
+
+  }
+
+  OnMouseOut(event:THREE.Object3D){
+    console.log(event);
+    const mesh = event as THREE.Mesh;
+    const material = mesh.material as THREE.MeshStandardMaterial
+    material.color.set(this.BaseColor);
+
+  }
+
+
   constructor(){
 
     console.log(this.meshes());
 
-    
     // injectBeforeRender(()=>{
       
 
