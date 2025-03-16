@@ -37,7 +37,6 @@ extend({ OrbitControls });
     <ngt-directional-light [position]="[ 1,1,-1]"  [intensity]="2" ></ngt-directional-light>
     <ngt-directional-light [position]="[-1,1, 1]"  [intensity]="2" ></ngt-directional-light>
     <ngt-directional-light [position]="[-1,1,-1]" [intensity]="2" ></ngt-directional-light>
-    <ngt-axes-helper></ngt-axes-helper>
   `,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   changeDetection: ChangeDetectionStrategy.OnPush,
